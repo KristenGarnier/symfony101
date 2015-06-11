@@ -5,7 +5,7 @@ set :use_sudo, false
 set :deploy_to,   "/var/www/awesome"
 set :app_path,    "app"
 
-set :repository,  "file:C:\xampp\htdocs\symfony101"
+set :repository,  "C:/xampp/htdocs/symfony101"
 set :deploy_via,   :copy
 set :scm,         :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `subversion`, `mercurial`, `perforce`, or `none`
@@ -37,8 +37,8 @@ end
 after "deploy:setup", "upload_parameters"
 
 set :shared_files, ["app/config/parameters.yml"]
-# set :shared_children [ app_path + "/logs", web_path + "/uploads"]
+set :shared_children [ web_path + "/uploads"]
 
 
 # Be more verbose by uncommenting the following line
-# logger.level = Logger::MAX_LEVEL
+#logger.level = Logger::MAX_LEVEL
