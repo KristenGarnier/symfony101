@@ -4,23 +4,31 @@ set :user,        "vagrant"
 set :use_sudo, false
 set :deploy_to,   "/var/www/awesome"
 set :app_path,    "app"
+set :web_path, 	  "web"
 
 set :repository,  "C:/xampp/htdocs/symfony101"
 set :deploy_via,   :copy
 set :scm,         :git
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `subversion`, `mercurial`, `perforce`, or `none`
 
 set :model_manager, "doctrine"
-# Or: `propel`
+
 
 role :web,        domain                         # Your HTTP server, Apache/etc
 role :app,        domain, :primary => true       # This may be the same as your `Web` server
+role :db,         domain, :primary => true
+
+set :writable_dirs,   ["app/cache", "app/logs"]
+set :webserver_user,      "www-data"
+set :permission_method,   :acl
+set :use_set_permissions, true
+
+ssh_options[:forward_agent] = true
 
 set :user_composer, true
 set :update_verdors, true
 
-# set :ssh_options, {port: 2222, keys: ['C:\vagrant\BzSWvb\puphpet\files\dot\ssh\id_rsa']}
 
+ssh_options[:forward_agent] = true
 ssh_options[:keys] = %w(C:/vagrant/BzSWvb/.vagrant/machines/default/virtualbox/private_key)
 
 set  :keep_releases,  3
@@ -36,9 +44,10 @@ end
 
 after "deploy:setup", "upload_parameters"
 
+default_run_options[:pty] = true
+
 set :shared_files, ["app/config/parameters.yml"]
-set :shared_children [ web_path + "/uploads"]
+set :shared_children,     [app_path + "/logs", web_path + "/uploads", "vendor"]
 
 
-# Be more verbose by uncommenting the following line
-#logger.level = Logger::MAX_LEVEL
+logger.level = Logger::MAX_LEVEL
