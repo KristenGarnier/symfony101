@@ -23,6 +23,8 @@ ssh_options[:forward_agent] = true
 #set :user_composer, true
 #set :update_verdors, true
 
+set :composer_install_flags, '--no-dev --no-interaction --optimize-autoloader'
+
 
 ssh_options[:forward_agent] = true
 ssh_options[:keys] = %w(C:/ssh/ssh_fastfood_private)
