@@ -20,8 +20,8 @@ role :db,         domain, :primary => true
 set :writable_dirs,   ["app/cache", "app/logs"]
 ssh_options[:forward_agent] = true
 
-set :user_composer, true
-set :update_verdors, true
+#set :user_composer, true
+#set :update_verdors, true
 
 
 ssh_options[:forward_agent] = true
