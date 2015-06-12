@@ -1,12 +1,13 @@
 set :application, "Capifony vagrant test"
-set :domain,      "10.10.10.10"
-set :user,        "vagrant"
+set :domain,      "dev1.fast-order.fr"
+set :user,        "fastorderuser"
 set :use_sudo, false
-set :deploy_to,   "/var/www/awesome"
+set :deploy_to,   "www/test"
 set :app_path,    "app"
 set :web_path, 	  "web"
 
-set :repository,  "https://github.com/KristenGarnier/symfony101.git"
+set :repository,  "C:/xampp/htdocs/symfony101"
+set :deploy_via,  :copy
 set :scm,         :git
 
 set :model_manager, "doctrine"
@@ -17,10 +18,6 @@ role :app,        domain, :primary => true       # This may be the same as your 
 role :db,         domain, :primary => true
 
 set :writable_dirs,   ["app/cache", "app/logs"]
-set :webserver_user,      "www-data"
-set :permission_method,   :acl
-set :use_set_permissions, true
-
 ssh_options[:forward_agent] = true
 
 set :user_composer, true
@@ -28,7 +25,7 @@ set :update_verdors, true
 
 
 ssh_options[:forward_agent] = true
-#ssh_options[:keys] = %w(C:\vagrant\BzSWvb\puphpet\files\dot\ssh\id_rsa.ppk)
+ssh_options[:keys] = %w(C:/ssh/ssh_fastfood_private)
 
 set  :keep_releases,  3
 
