@@ -6,8 +6,7 @@ set :deploy_to,   "/var/www/awesome"
 set :app_path,    "app"
 set :web_path, 	  "web"
 
-set :repository,  "C:/xampp/htdocs/symfony101"
-set :deploy_via,   :copy
+set :repository,  "https://github.com/KristenGarnier/symfony101.git"
 set :scm,         :git
 
 set :model_manager, "doctrine"
@@ -29,7 +28,7 @@ set :update_verdors, true
 
 
 ssh_options[:forward_agent] = true
-ssh_options[:keys] = %w(C:/vagrant/BzSWvb/.vagrant/machines/default/virtualbox/private_key)
+#ssh_options[:keys] = %w(C:\vagrant\BzSWvb\puphpet\files\dot\ssh\id_rsa.ppk)
 
 set  :keep_releases,  3
 
