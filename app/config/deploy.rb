@@ -2,7 +2,7 @@ set :application, "Capifony vagrant test"
 set :domain,      "dev1.fast-order.fr"
 set :user,        "fastorderuser"
 set :use_sudo, false
-set :deploy_to,   "www/test"
+set :deploy_to,   "sd/dev1/www/test"
 set :app_path,    "app"
 set :web_path, 	  "web"
 
